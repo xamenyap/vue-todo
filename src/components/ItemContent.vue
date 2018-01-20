@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-3 content-container">
+  <div class="col-md-12 content-container">
     <div class="col-md-12 content-title">Title: {{item.title}}</div>
     <div class="col-md-12 content-description">Description: {{item.description}}</div>
     <div class="col-md-12 content-date">Date: {{item.date}}</div>

@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <div class="container container-fluid">
-      <items-list></items-list>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 text-center">
+          <items-list></items-list>
+        </div>
+      </div>
     </div>
   </div>
 </template>

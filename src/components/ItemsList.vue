@@ -1,12 +1,14 @@
 <template>
   <div class="panel panel-default">
     <div class="panel-heading">
-      Your todo lists
+      {{title}}
     </div>
     <div class="panel-body">
       <item-content v-for="(item, index) in items" :key="index" :item="item"></item-content>
     </div>
-    <input type="button" class="btn btn-primary" value="Add Item" @click="openAddItemModel"/>
+    <div class="panel-footer">
+      <input type="button" class="btn btn-primary" value="Add Item" @click="openAddItemModel"/>
+    </div>
   </div>
 </template>
 
@@ -19,6 +21,7 @@
     },
     data() {
       return {
+        title: 'Your TODOs list',
         items: [
           {
             title: 'test',
