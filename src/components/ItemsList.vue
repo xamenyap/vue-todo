@@ -4,46 +4,44 @@
       {{title}}
     </div>
     <div class="panel-body">
-      <item-content v-for="(item, index) in items" :key="index" :item="item"></item-content>
+      <div v-if="this.items.length === 0">
+        <span>There is no item in your list.</span>
+      </div>
+      <div v-else>
+        <item-box v-for="(item, index) in items" :key="index" :item="item"></item-box>
+      </div>
     </div>
     <div class="panel-footer">
-      <input type="button" class="btn btn-primary" value="Add Item" @click="openAddItemModel"/>
+      <item-form @todo-item-submitted="addNewTodoItem"></item-form>
     </div>
   </div>
 </template>
 
 <script>
-  import ItemContent from './ItemContent'
+  import ItemBox from './ItemBox'
+  import ItemForm from './ItemForm'
 
   export default {
     components: {
-      ItemContent
+      ItemBox,
+      ItemForm
     },
     data() {
       return {
         title: 'Your TODOs list',
-        items: [
-          {
-            title: 'test',
-            description: 'a description 1',
-            date: (new Date()).toLocaleString()
-          },
-          {
-            title: 'test 2',
-            description: 'a description 2',
-            date: (new Date()).toLocaleString()
-          },
-          {
-            title: 'test 3',
-            description: 'a description 3',
-            date: (new Date()).toLocaleString()
-          }
-        ]
+        showModal: false,
+        items: []
       }
     },
     methods: {
-      openAddItemModel() {
-
+      addNewTodoItem(payload) {
+        this.items.push(
+          {
+            title: payload.title,
+            description: payload.description,
+            date: (new Date()).toLocaleString(),
+          }
+        );
       }
     }
   }
